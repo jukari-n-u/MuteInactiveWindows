@@ -40,8 +40,9 @@ namespace MuteInactiveWindow
             while (true)
             {
                 IntPtr hwnd = GetForegroundWindow();
-                GetWindowText(hwnd, sb, 256);
-                string windowText = sb.ToString();
+                string windowText;
+                if (GetWindowText(hwnd, sb, 256) != 0) windowText = sb.ToString();
+                windowText = "";
 
                 if (windowText == currentTextWindow) continue;
                 //1回前のチェック時とアクティブなウィンドウが変わったら実行
@@ -154,7 +155,7 @@ namespace MuteInactiveWindow
         public Settings()
         {
             this.monitoredApps = new string[0];
-            this.updateInterval = 100;
+            this.updateInterval = 1000;
         }
     }
 }
