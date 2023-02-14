@@ -1,4 +1,4 @@
-﻿namespace MuteInactiveWindow
+﻿namespace MuteInactiveWindows
 {
     partial class FormSettings
     {

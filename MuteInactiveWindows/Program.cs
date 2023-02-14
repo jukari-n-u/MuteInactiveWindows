@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace MuteInactiveWindow
+namespace MuteInactiveWindows
 {
     internal static class Program
     {
@@ -10,7 +10,7 @@ namespace MuteInactiveWindow
         [STAThread]
         static void Main()
         {
-            string mutexName = "MuteInactiveWindow";
+            string mutexName = "MuteInactiveWindows";
             System.Threading.Mutex mutex = new System.Threading.Mutex(false, mutexName);
 
             bool hasHandle = false;

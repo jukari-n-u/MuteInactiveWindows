@@ -1,6 +1,6 @@
-﻿namespace MuteInactiveWindow
+﻿namespace MuteInactiveWindows
 {
-    partial class FormEditMonitoredApp
+    partial class FormNewMonitoredApp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEditMonitoredApp));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNewMonitoredApp));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -50,7 +50,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(245, 23);
             this.textBox1.TabIndex = 1;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.TextChanged += new System.EventHandler(this.button1_TextChanged);
             // 
             // button1
             // 
@@ -62,6 +62,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.TextChanged += new System.EventHandler(this.button1_TextChanged);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
@@ -75,7 +76,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // FormEditMonitoredApp
+            // FormNewMonitoredApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -85,9 +86,8 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "FormEditMonitoredApp";
-            this.Text = "Edit Monitored App";
-            this.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Name = "FormNewMonitoredApp";
+            this.Text = "New Monitored App";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -8,15 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MuteInactiveWindow
+namespace MuteInactiveWindows
 {
-    public partial class FormEditMonitoredApp : Form
+    public partial class FormNewMonitoredApp : Form
     {
         public string value { get; set; }
-        public FormEditMonitoredApp(string currentText)
+        public FormNewMonitoredApp()
         {
             InitializeComponent();
-            textBox1.Text = currentText;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -30,7 +29,7 @@ namespace MuteInactiveWindow
             this.Close();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void button1_TextChanged(object sender, EventArgs e)
         {
             if (textBox1.Text == "") button1.Enabled = false;
             else button1.Enabled = true;

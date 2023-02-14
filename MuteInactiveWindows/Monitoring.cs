@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 using NAudio;
 using NAudio.CoreAudioApi;
 
-namespace MuteInactiveWindow
+namespace MuteInactiveWindows
 {
     internal class Monitoring
     {
@@ -98,7 +98,7 @@ namespace MuteInactiveWindow
             });
 
             notifyIcon = new NotifyIcon();
-            notifyIcon.Icon = new Icon("MuteInactiveWindow.ico");
+            notifyIcon.Icon = new Icon("MuteInactiveWindows.ico");
             notifyIcon.ContextMenuStrip = contextMenuStrip;
             notifyIcon.Text = "MuteInactiveWindows";
             notifyIcon.Visible = true;

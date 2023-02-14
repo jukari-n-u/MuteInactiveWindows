@@ -6,7 +6,7 @@
     <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>bin\Debug\net6.0-windows\MuteInactiveWindow.ico</ApplicationIcon>
+    <ApplicationIcon>bin\Debug\net6.0-windows\MuteInactiveWindows.ico</ApplicationIcon>
     <Title>MuteInactiveWindows</Title>
     <Authors>Yukari Noguchi</Authors>
     <Company>jukari.com</Company>
@@ -14,7 +14,7 @@
     <Description>特定のアプリが非アクティブになった時、そのアプリをミュートにする。</Description>
     <Copyright>Copyright © Yukari Noguchi 2023</Copyright>
     <PackageReadmeFile></PackageReadmeFile>
-    <RepositoryUrl>https://github.com/jukari-n-u/MuteInactiveWindow</RepositoryUrl>
+    <RepositoryUrl>https://github.com/jukari-n-u/MuteInactiveWindows</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="MuteInactiveWindow.ico">
+    <None Update="MuteInactiveWindows.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
