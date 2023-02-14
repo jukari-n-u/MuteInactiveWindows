@@ -13,19 +13,13 @@
     <Product />
     <Description>特定のアプリが非アクティブになった時、そのアプリをミュートにする。</Description>
     <Copyright>Copyright © Yukari Noguchi 2023</Copyright>
-    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageReadmeFile></PackageReadmeFile>
+    <RepositoryUrl>https://github.com/jukari-n-u/MuteInactiveWindow</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
     <Content Include="bin\Debug\net6.0-windows\MuteInactiveWindow.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="readme.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
