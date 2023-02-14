@@ -73,7 +73,6 @@ namespace MuteInactiveWindow
             backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(backgroundWorker_DoWork);
 
-            //コンテキストメニューを作成
             contextMenuStrip = new ContextMenuStrip();
             contextMenuStrip.Items.Add("Settings", null, (s, e) =>
             {
@@ -98,7 +97,6 @@ namespace MuteInactiveWindow
                 Application.Exit();
             });
 
-            // 常駐アプリ（タスクトレイのアイコン）を作成
             notifyIcon = new NotifyIcon();
             notifyIcon.Icon = new Icon("MuteInactiveWindow.ico");
             notifyIcon.ContextMenuStrip = contextMenuStrip;
@@ -108,13 +106,8 @@ namespace MuteInactiveWindow
 
         private void saveSettings()
         {
-            // XmlSerializerを使ってファイルに保存（TwitSettingオブジェクトの内容を書き込む）
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-
-            // カレントディレクトリに"settings.xml"というファイルで書き出す
             FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\" + "settings.xml", FileMode.Create);
-
-            // オブジェクトをシリアル化してXMLファイルに書き込む
             serializer.Serialize(fs, settings);
             fs.Close();
         }
@@ -124,11 +117,7 @@ namespace MuteInactiveWindow
             try
             {
                 XmlSerializer serializer = new XmlSerializer(typeof(Settings));
-
-                // XMLをTwitSettingsオブジェクトに読み込む
                 FileStream fs = new FileStream(Directory.GetCurrentDirectory() + "\\" + "settings.xml", FileMode.Open);
-
-                // XMLファイルを読み込み、逆シリアル化（復元）する
                 settings = (Settings)serializer.Deserialize(fs);
                 fs.Close();
             }

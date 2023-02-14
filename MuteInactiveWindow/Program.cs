@@ -10,9 +10,7 @@ namespace MuteInactiveWindow
         [STAThread]
         static void Main()
         {
-            //Mutex名を決める
             string mutexName = "MuteInactiveWindow";
-            //Mutexオブジェクトを作成する
             System.Threading.Mutex mutex = new System.Threading.Mutex(false, mutexName);
 
             bool hasHandle = false;
@@ -20,19 +18,14 @@ namespace MuteInactiveWindow
             {
                 try
                 {
-                    //ミューテックスの所有権を要求する
                     hasHandle = mutex.WaitOne(0, false);
                 }
-                //.NET Framework 2.0以降の場合
                 catch (System.Threading.AbandonedMutexException)
                 {
-                    //別のアプリケーションがミューテックスを解放しないで終了した時
                     hasHandle = true;
                 }
-                //ミューテックスを得られたか調べる
                 if (hasHandle == false)
                 {
-                    //得られなかった場合は、すでに起動していると判断して終了
                     MessageBox.Show("This application already running.");
                     return;
                 }
@@ -48,7 +41,6 @@ namespace MuteInactiveWindow
             {
                 if (hasHandle)
                 {
-                    //ミューテックスを解放する
                     mutex.ReleaseMutex();
                 }
                 mutex.Close();
