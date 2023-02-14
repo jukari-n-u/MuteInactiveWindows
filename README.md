@@ -1,4 +1,4 @@
-# MuteInactiveWindow
+# MuteInactiveWindows
 This program mutes a pre-defined application when it becomes inactive.
 
 ## Description
