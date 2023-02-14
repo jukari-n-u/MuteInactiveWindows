@@ -14,7 +14,7 @@ This program obtains the name of the currently active window at regular interval
 - .NET 6.0
 
 ## Author
-Jukari Noguchi (https://twitter.com/jukari_N_U)
+[Jukari Noguchi](https://twitter.com/jukari_N_U)
 
 ## License
 [MIT license](https://en.wikipedia.org/wiki/MIT_License)
