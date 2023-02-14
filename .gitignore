@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MuteInactiveWindow/bin/Release/net6.0-windows/settings.xml
