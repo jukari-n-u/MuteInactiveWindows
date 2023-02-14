@@ -10,7 +10,7 @@ namespace MuteInactiveWindow
         [STAThread]
         static void Main()
         {
-            //Mutex名を決める（必ずアプリケーション固有の文字列に変更すること！）
+            //Mutex名を決める
             string mutexName = "MuteInactiveWindow";
             //Mutexオブジェクトを作成する
             System.Threading.Mutex mutex = new System.Threading.Mutex(false, mutexName);

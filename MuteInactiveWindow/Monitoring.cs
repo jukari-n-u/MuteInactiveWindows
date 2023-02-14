@@ -36,18 +36,16 @@ namespace MuteInactiveWindow
             MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
             device = DevEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             StringBuilder sb = new StringBuilder();
-            //string currentTextWindow = null;
+            string currentTextWindow = null;
             while (true)
             {
                 IntPtr hwnd = GetForegroundWindow();
                 GetWindowText(hwnd, sb, 256);
                 string windowText = sb.ToString();
 
-                /*
                 if (windowText == currentTextWindow) continue;
                 //1回前のチェック時とアクティブなウィンドウが変わったら実行
                 currentTextWindow = windowText;
-                */
 
                 SessionCollection sessions = device.AudioSessionManager.Sessions;
                 for (int i = 0; i < sessions.Count; i++)
@@ -55,12 +53,10 @@ namespace MuteInactiveWindow
                     AudioSessionControl session = sessions[i];
                     Process process = Process.GetProcessById((int)session.GetProcessID);
                     string processText = process.MainWindowTitle != "" ? process.MainWindowTitle : process.ProcessName;
-                    //Debug.WriteLine(processText);
                     if (settings.monitoredApps.Contains(processText))
                     {
                         if (windowText == processText) session.SimpleAudioVolume.Mute = false;
                         else session.SimpleAudioVolume.Mute = true;
-                        //monitoredApps.Add(processText, session);
                     }
                 }
 
@@ -87,6 +83,12 @@ namespace MuteInactiveWindow
                     settings = form.value;
                     saveSettings();
                 }
+            });
+            contextMenuStrip.Items.Add("Restart", null, (s, e) =>
+            {
+                notifyIcon.Dispose();
+                contextMenuStrip.Dispose();
+                Application.Restart();
             });
             contextMenuStrip.Items.Add("Exit", null, (s, e) =>
             {

@@ -20,6 +20,18 @@
 
   <ItemGroup>
     <Content Include="bin\Debug\net6.0-windows\MuteInactiveWindow.ico" />
+    <Content Include="bin\Release\net6.0-windows\MuteInactiveWindow.deps.json" />
+    <Content Include="bin\Release\net6.0-windows\MuteInactiveWindow.ico" />
+    <Content Include="bin\Release\net6.0-windows\MuteInactiveWindow.runtimeconfig.json" />
+    <Content Include="bin\Release\net6.0-windows\settings.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Release\net6.0-windows\MuteInactiveWindow.dll" />
+    <None Include="bin\Release\net6.0-windows\MuteInactiveWindow.exe" />
+    <None Include="bin\Release\net6.0-windows\MuteInactiveWindow.pdb" />
+    <None Include="bin\Release\net6.0-windows\NAudio.Core.dll" />
+    <None Include="bin\Release\net6.0-windows\NAudio.Wasapi.dll" />
   </ItemGroup>
 
   <ItemGroup>
