@@ -39,13 +39,15 @@ namespace MuteInactiveWindow
             string currentTextWindow = null;
             while (true)
             {
+                Thread.Sleep(settings.updateInterval);
+
                 IntPtr hwnd = GetForegroundWindow();
                 string windowText;
                 if (GetWindowText(hwnd, sb, 256) != 0) windowText = sb.ToString();
-                windowText = "";
+                else windowText = "";
 
-                if (windowText == currentTextWindow) continue;
                 //1回前のチェック時とアクティブなウィンドウが変わったら実行
+                if (windowText == currentTextWindow) continue;
                 currentTextWindow = windowText;
 
                 SessionCollection sessions = device.AudioSessionManager.Sessions;
@@ -60,8 +62,6 @@ namespace MuteInactiveWindow
                         else session.SimpleAudioVolume.Mute = true;
                     }
                 }
-
-                Thread.Sleep(settings.updateInterval);
             }
         }
 
