@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using NAudio;
 using NAudio.CoreAudioApi;
@@ -33,8 +34,6 @@ namespace MuteInactiveWindows
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
-            device = DevEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             StringBuilder sb = new StringBuilder();
             string currentTextWindow = null;
             while (true)
@@ -50,12 +49,16 @@ namespace MuteInactiveWindows
                 if (windowText == currentTextWindow) continue;
                 currentTextWindow = windowText;
 
+                //デバイスの取得は毎回やり直さないと、セッションが更新されない
+                MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
+                device = DevEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
                 SessionCollection sessions = device.AudioSessionManager.Sessions;
                 for (int i = 0; i < sessions.Count; i++)
                 {
                     AudioSessionControl session = sessions[i];
                     Process process = Process.GetProcessById((int)session.GetProcessID);
                     string processText = process.MainWindowTitle != "" ? process.MainWindowTitle : process.ProcessName;
+                    //Debug.WriteLine(processText);
                     if (settings.monitoredApps.Contains(processText))
                     {
                         if (windowText == processText) session.SimpleAudioVolume.Mute = false;
@@ -84,6 +87,7 @@ namespace MuteInactiveWindows
                     saveSettings();
                 }
             });
+            contextMenuStrip.Items.Add(new ToolStripSeparator());
             contextMenuStrip.Items.Add("Restart", null, (s, e) =>
             {
                 notifyIcon.Dispose();
