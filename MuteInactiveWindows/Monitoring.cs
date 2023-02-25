@@ -55,15 +55,19 @@ namespace MuteInactiveWindows
                 SessionCollection sessions = device.AudioSessionManager.Sessions;
                 for (int i = 0; i < sessions.Count; i++)
                 {
-                    AudioSessionControl session = sessions[i];
-                    Process process = Process.GetProcessById((int)session.GetProcessID);
-                    string processText = process.MainWindowTitle != "" ? process.MainWindowTitle : process.ProcessName;
-                    //Debug.WriteLine(processText);
-                    if (settings.monitoredApps.Contains(processText))
+                    try
                     {
-                        if (windowText == processText) session.SimpleAudioVolume.Mute = false;
-                        else session.SimpleAudioVolume.Mute = true;
+                        AudioSessionControl session = sessions[i];
+                        Process process = Process.GetProcessById((int)session.GetProcessID);
+                        string processText = process.MainWindowTitle != "" ? process.MainWindowTitle : process.ProcessName;
+                        Debug.WriteLine(processText);
+                        if (settings.monitoredApps.Contains(processText))
+                        {
+                            if (windowText == processText) session.SimpleAudioVolume.Mute = false;
+                            else session.SimpleAudioVolume.Mute = true;
+                        }
                     }
+                    catch { }
                 }
             }
         }

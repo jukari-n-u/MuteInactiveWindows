@@ -91,9 +91,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 189);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 15);
+            this.label2.Size = new System.Drawing.Size(139, 15);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Update Time (ms)";
+            this.label2.Text = "Updating Frequency (ms)";
             // 
             // button2
             // 
@@ -140,7 +140,7 @@
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormSettings";
-            this.Text = "Mute Inactive Windows v1.1";
+            this.Text = "Mute Inactive Windows v1.2";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
