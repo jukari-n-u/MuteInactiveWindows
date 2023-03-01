@@ -49,14 +49,15 @@ namespace MuteInactiveWindows
                 if (windowText == currentTextWindow) continue;
                 currentTextWindow = windowText;
 
-                //デバイスの取得は毎回やり直さないと、セッションが更新されない
-                MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
-                device = DevEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-                SessionCollection sessions = device.AudioSessionManager.Sessions;
-                for (int i = 0; i < sessions.Count; i++)
+                try
                 {
-                    try
+                    //デバイスの取得は毎回やり直さないと、セッションが更新されない
+                    MMDeviceEnumerator DevEnum = new MMDeviceEnumerator();
+                    device = DevEnum.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+                    SessionCollection sessions = device.AudioSessionManager.Sessions;
+                    for (int i = 0; i < sessions.Count; i++)
                     {
+
                         AudioSessionControl session = sessions[i];
                         Process process = Process.GetProcessById((int)session.GetProcessID);
                         string processText = process.MainWindowTitle != "" ? process.MainWindowTitle : process.ProcessName;
@@ -67,8 +68,9 @@ namespace MuteInactiveWindows
                             else session.SimpleAudioVolume.Mute = true;
                         }
                     }
-                    catch { }
+
                 }
+                catch { }
             }
         }
 
